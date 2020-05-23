@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block search %}
+<form action="{% url 'search_results' %}" method="get">
+    <input type="submit" value="Search" style="float: right; margin-right: 25%" />
+    <div style="overflow: hidden">
+        <p style="padding-left: 100px" >ID: <input name="q_hostname" type="text" style="text-align: center; width: 95%;" onfocus="this.value=''" autocomplete="off"> 
+        </p>
+    </div>
+</form>
+{% endblock %}
