@@ -14,7 +14,8 @@
 
 	    <script>
 	    	function confirm_changes() {
-	    		confirm("Are you SURE you want to apply these changes?");
+	    		if (!confirm("Are you SURE you want to apply these changes?")):
+                    return false;
 	    	}
 	    </script>
     </form>
