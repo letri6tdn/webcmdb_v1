@@ -44,32 +44,35 @@
 
   <font size="2" face="Courier New" >
 
-  <div class='table_result'>
-    <table>
-      <tr>
-        <th>Hostname</th>
-        <th>Last Known Location</th>
-        <th>IPv4</th>
-        <th>IPv6</th>
-        <th>OS</th>
-        <th>Physical/Virtual Machine</th>
-        <th>Owner</th>
-        <th>Administrator</th>
-        <th>UofA Tag</th>
-        <th>Model</th>
-        <th>Processor</th>
-        <th>Ram(GB)</th>
-        <th>Storage(GB)</th>
-        <th>GPU</th>
-        <th>Serial No.</th>
-        <th>Status</th>
-        <th>Rack No.</th>
-        <th>SRIT Access</th>
-        <th>Power Up</th>
-        <th>Support Team</th>
-        <th>Dept</th>
-        <th>Comment</th>
-      </tr>
+  <div class='searchable-header'>
+    <table class='searchable sortable'>
+      <thead>
+        <tr>
+          <th>Hostname</th>
+          <th>Last Known Location</th>
+          <th>IPv4</th>
+          <th>IPv6</th>
+          <th>OS</th>
+          <th>Physical/Virtual Machine</th>
+          <th>Owner</th>
+          <th>Administrator</th>
+          <th>UofA Tag</th>
+          <th>Model</th>
+          <th>Processor</th>
+          <th>Ram(GB)</th>
+          <th>Storage(GB)</th>
+          <th>GPU</th>
+          <th>Serial No.</th>
+          <th>Status</th>
+          <th>Rack No.</th>
+          <th>SRIT Access</th>
+          <th>Power Up</th>
+          <th>Support Team</th>
+          <th>Dept</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
       {% for machine in object_list %}
         <tr>
           <td><a href="{% url 'machine_edit' pk=machine.pk %}">{{ machine.hostname }}</a></td>
@@ -96,6 +99,7 @@
           <td>{{ machine.comment }}</td>
         </tr>
       {% endfor %}
+    </tbody>
     </table>
   </div>
 

@@ -10,3 +10,7 @@
    + Auth
    + Export csv
    + UI design
+
+- Additional upgrade:
+   + Searchable / Filterable / Sortable result table
+   + Redirecting button
