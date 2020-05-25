@@ -1,21 +1,4 @@
-{% extends "base.html" %}
-
-{% block content %}
-
-  {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-  {% endif %}
-  
-  {% if next %}
-    {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
-    {% else %}
-      <p>Please login to see this page.</p>
-    {% endif %}
-  {% endif %}
-  <style>
-    @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .login-page {
   width: 360px;
@@ -115,23 +98,3 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
-</style>
-  
-  <div class="login-page">
-    <div class="form">
-      <form class="login-form" method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <input id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:"" }}" type="text" placeholder="username"/>
-        <input id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" value="{{ form.password.value|default_if_none:"" }}" type="password" placeholder="password"/>
-        <button type="submit">login</button>
-<!--         <p class="message">Not registered? <a href="#">Create an account</a></p>
-        <input type="submit" value="login" /> -->
-        <input type="hidden" name="next" value="{{ next }}" />
-      </form>
-    </div>
-  </div>
-  
-  {# Assumes you setup the password_reset view in your URLconf #}
-  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-  
-{% endblock %}
