@@ -4,17 +4,183 @@
 <form action="{% url 'search_results' %}" method="get" style="padding: 10px">
 	<fieldset style="border: 1px solid grey; padding: 5px">
 		<legend style="color: #6699ff; padding-left:10px; width: auto"><b><i>Simple Search: &nbsp;</i></b></legend>
-		<label for='q_hostname' style="">Hostname: </label><br>
+		<label for='q_hostname' style=""><b>Hostname: </b></label><br>
 		<input type='text' id='q_hostname' name='q_hostname' placeholder="Please enter the hostname" autofocus size="50"><br><br>
-		<button type="submit" class="btn btn-success">Search</button>	
+		<button type="submit" class="btn btn-success">Search</button>
+		<input type="reset" class="btn btn-danger" value="Reset">	
 	</fieldset><br><br>
 
 
 	<fieldset style="border: 1px solid grey; padding: 5px">
 		<legend style="color: #ff3300; padding-left:10px; width: auto"><b><i>Advanced Search: &nbsp;</i></b></legend>
-		<label for='q_ipv4'style="">IPv4: </label><br>
-		<input type='text' id='q_ipv4' name='q_ipv4' placeholder="Please enter the IPv4" autofocus size="50"><br><br>
+		<table>
+
+			<tbody>
+
+				<tr>
+					<th>
+						<label for='q_location'style="">Location: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_location' name='q_location' placeholder="Please enter the location"  size="50">
+					</td>
+					<th style="padding-left: 70px">
+						<label for='q_ram'style="">RAM (GB): &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_location' name='q_location' placeholder="Please enter the RAM"  size="50">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for='q_ipv4'style="">IPv4: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_ipv4' name='q_ipv4' placeholder="Please enter the IPv4"  size="50">
+					</td>
+					<th style="padding-left: 70px">
+						<label for='q_storage'style="">Storage (GB): &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_storage' name='q_storage' placeholder="Please enter the storage"  size="50">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for='q_ipv6'style="">IPv6: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_ipv6' name='q_ipv6' placeholder="Please enter the IPv6"  size="50">
+					</td>
+					<th style="padding-left: 70px">
+						<label for='q_gpu'style="">GPU: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_gpu' name='q_gpu' placeholder="Please enter the GPU"  size="50">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for='q_os'style="">OS: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_os' name='q_os' placeholder="Please enter the OS"  size="50">
+					</td>
+					<th style="padding-left: 70px">
+						<label for='q_serial_number'style="">Serial Number: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_serial_number' name='q_serial_number' placeholder="Please enter the serial number"  size="50">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for='q_physical_virtual'style="">Physical/Virtual: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_physical_virtual' name='q_physical_virtual' placeholder="Gotta work this out LOL"  size="50">
+					</td>
+					<th style="padding-left: 70px">
+						<label for='q_status'style="">Status: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_status' name='q_status' placeholder="Active/Retired/?"  size="50">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for='q_owner'style="">Owner: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_owner' name='q_owner' placeholder="Please enter the owner"  size="50">
+					</td>
+					<th style="padding-left: 70px">
+						<label for='q_rack'style="">Rack Number: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_rack' name='q_rack' placeholder="Please enter the rack number"  size="50">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for='q_administrator'style="">Administrator: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_administrator' name='q_administrator' placeholder="Please enter the administrator"  size="50">
+					</td>
+					<th style="padding-left: 70px">
+						<label for='q_powerup'style="">Power Up: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_powerup' name='q_powerup' placeholder="Please enter the Power Up"  size="50">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for='q_uofa_tag'style="">UofA Tag: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_uofa_tag' name='q_uofa_tag' placeholder="Please enter the UofA tag"  size="50">
+					</td>
+					<th style="padding-left: 70px">
+						<label for='q_support'style="">Support Team: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_support' name='q_support' placeholder="Please enter the support team"  size="50">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for='q_model'style="">Model: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_model' name='q_model' placeholder="Please enter the model"  size="50">
+					</td>
+					<th style="padding-left: 70px">
+						<label for='q_dept'style="">Department: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_dept' name='q_dept' placeholder="Please enter the department"  size="50">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for='q_processor'style="">Processor: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_processor' name='q_processor' placeholder="Please enter the processor"  size="50">
+					</td>
+					<th style="padding-left: 70px">
+						<label for='q_srit_access'style="">SRIT access: &nbsp;</label>
+					</th>
+					<td>
+						<input type='text' id='q_srit_access' name='q_srit_access' placeholder="SRIT Access?"  size="50">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for='q_comments' style="">Comments: &nbsp;</label>
+					</th>
+					<td>
+						<textarea id='q_comments' name='q_comments' placeholder="Any comments?" cols="52"></textarea> 
+				
+			</tbody>
+
+		</table>
+
 	    <button type="submit" class="btn btn-success">Search</button>
+
+	    <input type="reset" class="btn btn-danger" value="Reset">	
 	</fieldset>
 
 </form>
