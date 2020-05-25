@@ -4,10 +4,10 @@
 - Currently implemented:
   1) Search
   2) Edit
+  3) Auth
 
 - Incoming milestones:
    + Add
-   + Auth
    + Export csv
    + UI design
 
