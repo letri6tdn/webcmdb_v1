@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>Add/Edit Machine Information</h2>
-    <form method="POST" class="post-form">
+    <h2 style="padding:5px 5px 5px 20px">Add/Edit Machine Information</h2>
+    <form method="POST" class="post-form" style="padding: 10px">
+
     	{% csrf_token %}
-        {{ form.as_table }}
-        <button style="border: solid 1px" type="submit" onclick="confirm_changes()">Save</button>
+    	<table >
+
+        	{{ form }}
+
+    	</table>
+        <button style="border: solid 1px" type="submit" onclick="confirm_changes()" class="btn btn-primary">Save</button>
 
 	    <script>
 	    	function confirm_changes() {
