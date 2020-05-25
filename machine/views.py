@@ -12,8 +12,12 @@ class SearchResultsView(ListView):
 	template_name = 'search_results.html'
 
 	def get_queryset(self):
-		query = self.request.GET.get('q_hostname')
-		return Machines.objects.filter(Q(hostname__icontains=query))
+		query_hostname = self.request.GET.get('q_hostname')
+		query_ipv4 = self.request.GET.get('q_ipv4')
+		return Machines.objects.filter(
+			Q(hostname__icontains=query_hostname) &
+			Q(ipv4__icontains=query_ipv4)
+		)
 
 def machine_edit(request, pk):
 	machine = get_object_or_404(Machines, pk=pk)

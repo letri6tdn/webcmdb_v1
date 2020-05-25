@@ -1,11 +1,28 @@
 {% extends 'base.html' %}
 
 {% block search %}
-<form action="{% url 'search_results' %}" method="get">
-    <input type="submit" value="Search" style="float: right; margin-right: 25%" />
-    <div style="overflow: hidden">
-        <p style="padding-left: 100px" >ID: <input name="q_hostname" type="text" style="text-align: center; width: 95%;" onfocus="this.value=''" autocomplete="off"> 
-        </p>
-    </div>
+<form action="{% url 'search_results' %}" method="get" style="padding: 10px">
+	<fieldset style="border: 1px solid grey; padding: 5px">
+		<legend style="color: #6699ff; padding-left:10px; width: auto"><b><i>Simple Search: &nbsp;</i></b></legend>
+		<label for='q_hostname' style="">Hostname: </label><br>
+		<input type='text' id='q_hostname' name='q_hostname' placeholder="Please enter the hostname" autofocus size="50"><br><br>
+	    <input type="submit" value="Search"/></fieldset><br><br>
+	</fieldset>
+
+	<fieldset style="border: 1px solid grey; padding: 5px">
+		<legend style="color: #ff3300; padding-left:10px; width: auto"><b><i>Advanced Search: &nbsp;</i></b></legend>
+		<label for='q_ipv4'style="">IPv4: </label><br>
+		<input type='text' id='q_ipv4' name='q_ipv4' placeholder="Please enter the IPv4" autofocus size="50"><br><br>
+	    <input type="submit" value="Search"/>
+	</fieldset>
+
 </form>
 {% endblock %}
+
+<!--possible later referrence
+
+<div style="overflow: hidden">
+	        <p style="padding-left: 100px" >Hostname: <input name="q_hostname" type="text" style="text-align: center; width: 95%;" onfocus="this.value=''" autocomplete="off"> 
+	        </p>
+	    </div>
+-->
