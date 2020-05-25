@@ -2,8 +2,15 @@
 
 {% block content %}
     <h2>Add/Edit Machine Information</h2>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_ul }}
-        <button type="submit" class="save btn btn-default">Save</button>
+    <form method="POST" class="post-form">
+    	{% csrf_token %}
+        {{ form.as_table }}
+        <button style="border: solid 1px" type="submit" onclick="confirm_changes()">Save</button>
+
+	    <script>
+	    	function confirm_changes() {
+	    		confirm("Are you SURE you want to apply these changes?");
+	    	}
+	    </script>
     </form>
 {% endblock %}
