@@ -38,83 +38,92 @@
   </head>
 
   <body>
-    <div style="float:right; padding: 5px">
-      <form align="right" name="form1" method="post" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <label class="logoutLblPos">
-          <input name="submit2" type="submit" id="submit2" value="LOG OUT">
-        </label>
-      </form>
-  </div>
-    <div class='container'>
-      <h1>Search Results</h1>
+    {% if user.is_authenticated %}
+
+      <div style="float:right; padding: 5px">
+          <form align="right" name="form1" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <label class="logoutLblPos">
+              <input name="logout_button" type="submit" id="logout_button" value="log out">
+            </label>
+          </form>
+          <form align="right" name="form2" action="{% url 'home' %}">
+            <label class="home_button">
+              <input name="home_button" type="submit" id="home_button" value="home">
+            </label>
+          </form>
+      </div>
+      <h1 style="margin: 20px 0px 0px 20px">Search Results</h1>
+
+    <font size="2" face="Courier New" >
+
+    <div class='searchable-header'>
+      <table class='searchable sortable'>
+        <thead>
+          <tr>
+            <th>Hostname</th>
+            <th>Last Known Location</th>
+            <th>IPv4</th>
+            <th>IPv6</th>
+            <th>OS</th>
+            <th>Physical/Virtual Machine</th>
+            <th>Owner</th>
+            <th>Administrator</th>
+            <th>UofA Tag</th>
+            <th>Model</th>
+            <th>Processor</th>
+            <th>Ram(GB)</th>
+            <th>Storage(GB)</th>
+            <th>GPU</th>
+            <th>Serial No.</th>
+            <th>Status</th>
+            <th>Rack No.</th>
+            <th>SRIT Access</th>
+            <th>Power Up</th>
+            <th>Support Team</th>
+            <th>Dept</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for machine in object_list %}
+          <tr>
+            <td><a href="{% url 'machine_edit' pk=machine.pk %}">{{ machine.hostname }}</a></td>
+            <td>{{ machine.last_known_location }}</td>
+            <td>{{ machine.ipv4 }}</td>
+            <td>{{ machine.ipv6 }}</td>
+            <td>{{ machine.operating_system }}</td>
+            <td>{{ machine.physical_virtual_machine }}</td>
+            <td>{{ machine.owner }}</td>
+            <td>{{ machine.administrator }}</td>
+            <td>{{ machine.u_of_a_tag_number }}</td>
+            <td>{{ machine.make_model }}</td>
+            <td>{{ machine.processor }}</td>
+            <td>{{ machine.ram_gb_field }}</td>
+            <td>{{ machine.storage_space_gb_field }}</td>
+            <td>{{ machine.gpu }}</td>
+            <td>{{ machine.serial_number }}</td>
+            <td>{{ machine.status }}</td>
+            <td>{{ machine.rack_number }}</td>
+            <td>{{ machine.srit_access }}</td>
+            <td>{{ machine.power_up }}</td>
+            <td>{{ machine.support_team }}</td>
+            <td>{{ machine.department }}</td>
+            <td>{{ machine.comment }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      </table>
     </div>
 
-  <font size="2" face="Courier New" >
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    {% else %}
+      <p><a href="{% url 'login' %}">You're not logged in, click here to login</a></p>
+    {% endif %}
 
-  <div class='searchable-header'>
-    <table class='searchable sortable'>
-      <thead>
-        <tr>
-          <th>Hostname</th>
-          <th>Last Known Location</th>
-          <th>IPv4</th>
-          <th>IPv6</th>
-          <th>OS</th>
-          <th>Physical/Virtual Machine</th>
-          <th>Owner</th>
-          <th>Administrator</th>
-          <th>UofA Tag</th>
-          <th>Model</th>
-          <th>Processor</th>
-          <th>Ram(GB)</th>
-          <th>Storage(GB)</th>
-          <th>GPU</th>
-          <th>Serial No.</th>
-          <th>Status</th>
-          <th>Rack No.</th>
-          <th>SRIT Access</th>
-          <th>Power Up</th>
-          <th>Support Team</th>
-          <th>Dept</th>
-          <th>Comment</th>
-        </tr>
-      </thead>
-      <tbody>
-      {% for machine in object_list %}
-        <tr>
-          <td><a href="{% url 'machine_edit' pk=machine.pk %}">{{ machine.hostname }}</a></td>
-          <td>{{ machine.last_known_location }}</td>
-          <td>{{ machine.ipv4 }}</td>
-          <td>{{ machine.ipv6 }}</td>
-          <td>{{ machine.operating_system }}</td>
-          <td>{{ machine.physical_virtual_machine }}</td>
-          <td>{{ machine.owner }}</td>
-          <td>{{ machine.administrator }}</td>
-          <td>{{ machine.u_of_a_tag_number }}</td>
-          <td>{{ machine.make_model }}</td>
-          <td>{{ machine.processor }}</td>
-          <td>{{ machine.ram_gb_field }}</td>
-          <td>{{ machine.storage_space_gb_field }}</td>
-          <td>{{ machine.gpu }}</td>
-          <td>{{ machine.serial_number }}</td>
-          <td>{{ machine.status }}</td>
-          <td>{{ machine.rack_number }}</td>
-          <td>{{ machine.srit_access }}</td>
-          <td>{{ machine.power_up }}</td>
-          <td>{{ machine.support_team }}</td>
-          <td>{{ machine.department }}</td>
-          <td>{{ machine.comment }}</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-    </table>
-  </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>
 </html>

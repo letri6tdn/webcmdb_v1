@@ -10,11 +10,22 @@
     <form align="right" name="form1" method="post" action="{% url 'logout' %}">
       {% csrf_token %}
       <label class="logoutLblPos">
-        <input name="submit2" type="submit" id="submit2" value="log out">
+        <input name="logout_button" type="submit" id="logout_button" value="log out">
+      </label>
+    </form>
+    <form align="right" name="form2" action="{% url 'home' %}">
+      <label class="home_button">
+        <input name="home_button" type="submit" id="home_button" value="home">
       </label>
     </form>
 </div>
 <h1 style="padding: 10px">Welcome to WebCMDB v1</h1>
+
+<form method="get" action="{% url 'machine_add' %}">
+	<button style="border: solid 1px; margin: 0px 0px 5px 15px" type="submit" class="btn btn-primary">Add</button>
+</form>
+
+
 <form action="{% url 'search_results' %}" method="get" style="padding: 0px 10px 10px 10px">
 	<fieldset style="border: 1px solid grey; padding: 5px">
 		<legend style="color: #6699ff; padding-left:10px; width: auto"><b>Simple Search: &nbsp;</b></legend>

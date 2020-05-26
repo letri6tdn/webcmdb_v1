@@ -9,7 +9,7 @@ from django.db import models
 
 
 class Machines(models.Model):
-    id = models.TextField(db_column='ID', primary_key=True,blank=True, null=False)  # Field name made lowercase.
+    id_machine = models.TextField(db_column='ID', primary_key=True,blank=True, null=False)  # Field name made lowercase.
     hostname = models.TextField(db_column='Hostname', blank=True, null=True)  # Field name made lowercase.
     last_known_location = models.TextField(db_column='Last Known Location', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     ipv4 = models.TextField(db_column='IPv4', blank=True, null=True)  # Field name made lowercase.

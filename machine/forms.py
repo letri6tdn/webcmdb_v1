@@ -30,7 +30,7 @@ class MachineForm(forms.ModelForm):
         			'department',
         			'comments']
         widgets = {
-            'hostname': forms.TextInput(attrs={'size':40}),
+            'hostname': forms.TextInput(attrs={'size':40, 'required': True, 'autofocus': True}),
             'last_known_location': forms.TextInput(attrs={'size':40}),
             'ipv4': forms.TextInput(attrs={'size':40}),
             'ipv6': forms.TextInput(attrs={'size':40}),
@@ -51,5 +51,5 @@ class MachineForm(forms.ModelForm):
             'power_up': forms.TextInput(attrs={'size':40}),
             'support_team': forms.TextInput(attrs={'size':40}),
             'department': forms.TextInput(attrs={'size':40}),
-            'comments': forms.Textarea(),
+            'comments': forms.Textarea(attrs={'cols':43}),
         }

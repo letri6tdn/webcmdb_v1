@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q # new
 
 from django.views.generic import TemplateView, ListView
 from .forms import MachineForm
+from django.contrib.auth.decorators import login_required
 
 
 from .models import Machines
@@ -63,6 +64,7 @@ class SearchResultsView(ListView):
 			Q(comments__icontains=query_comments)
 		)
 
+@login_required
 def machine_edit(request, pk):
 	machine = get_object_or_404(Machines, pk=pk)
 	if request.method == "POST":
@@ -74,3 +76,19 @@ def machine_edit(request, pk):
 	else:
 		form = MachineForm(instance=machine)
 	return render(request, 'machine_edit.html', {'form': form})
+
+#here the machine pk is now its HOSTNAME instead of the DB's primary is a STR of number lettering
+#gotta work this out
+
+@login_required
+def machine_add(request):
+	if request.method == "POST":
+		form = MachineForm(request.POST)
+		if form.is_valid:
+			machine = form.save(commit=False)
+			machine.id_machine = machine.hostname
+			machine.save()
+			return redirect('machine_edit', pk=machine.pk)
+	else:
+		form = MachineForm()
+	return render(request, 'machine_add.html', {'form': form})
