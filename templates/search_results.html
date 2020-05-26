@@ -38,6 +38,14 @@
   </head>
 
   <body>
+    <div style="float:right; padding: 5px">
+      <form align="right" name="form1" method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <label class="logoutLblPos">
+          <input name="submit2" type="submit" id="submit2" value="LOG OUT">
+        </label>
+      </form>
+  </div>
     <div class='container'>
       <h1>Search Results</h1>
     </div>

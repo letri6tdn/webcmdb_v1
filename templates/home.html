@@ -1,10 +1,23 @@
 {% extends 'base.html' %}
 
 {% block search %}
-<h1>Welcome to WebCMDB v1</h1>
-<form action="{% url 'search_results' %}" method="get" style="padding: 10px">
+<style>
+	body {
+		background: #ededed;
+	}
+</style>
+<div style="float:right; padding: 5px">
+    <form align="right" name="form1" method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <label class="logoutLblPos">
+        <input name="submit2" type="submit" id="submit2" value="log out">
+      </label>
+    </form>
+</div>
+<h1 style="padding: 10px">Welcome to WebCMDB v1</h1>
+<form action="{% url 'search_results' %}" method="get" style="padding: 0px 10px 10px 10px">
 	<fieldset style="border: 1px solid grey; padding: 5px">
-		<legend style="color: #6699ff; padding-left:10px; width: auto"><b><i>Simple Search: &nbsp;</i></b></legend>
+		<legend style="color: #6699ff; padding-left:10px; width: auto"><b>Simple Search: &nbsp;</b></legend>
 		<label for='q_hostname' style=""><b>Hostname: </b></label><br>
 		<input type='text' id='q_hostname' name='q_hostname' placeholder="Please enter the hostname" autofocus size="50" required=""><br><br>
 		<button type="submit" class="btn btn-success">Search</button>
@@ -13,7 +26,7 @@
 
 
 	<fieldset style="border: 1px solid grey; padding: 5px">
-		<legend style="color: #ff3300; padding-left:10px; width: auto"><b><i>Advanced Search: &nbsp;</i></b></legend>
+		<legend style="color: #ff3300; padding-left:10px; width: auto"><b>Advanced Search: &nbsp;</b></legend>
 		<table>
 
 			<tbody>
