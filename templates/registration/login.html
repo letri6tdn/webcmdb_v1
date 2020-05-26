@@ -7,7 +7,7 @@
     @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
   .login-page {
-    width: 360px;
+    width: 480px;
     padding: 8% 0 0;
     margin: auto;
   }
@@ -15,9 +15,9 @@
     position: relative;
     z-index: 1;
     background: #FFFFFF;
-    max-width: 360px;
+    max-width: 480px;
     margin: 0 auto 100px;
-    padding: 45px;
+    padding: 25px 45px 20px 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   }
@@ -39,7 +39,7 @@
     background: #4CAF50;
     width: 100%;
     border: 0;
-    padding: 15px;
+    padding: 8px 15px 7px 15px;
     color: #FFFFFF;
     font-size: 14px;
     -webkit-transition: all 0.3 ease;
@@ -94,12 +94,18 @@
   .container .info span .fa {
     color: #EF3B3A;
   }
+
+  #lost_password {
+    text-align: right;
+    font-size: 14px;
+    margin-bottom: 15px
+  }
   body {
-    background: #76b852; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-    background: -moz-linear-gradient(right, #76b852, #8DC26F);
-    background: -o-linear-gradient(right, #76b852, #8DC26F);
-    background: linear-gradient(to left, #76b852, #8DC26F);
+    background: #486cb0; /* fallback for old browsers */
+    background: -webkit-linear-gradient(right, #486cb0, #8DC26F);
+    background: -moz-linear-gradient(right, #486cb0, #8DC26F);
+    background: -o-linear-gradient(right, #486cb0, #8DC26F);
+    background: linear-gradient(to left, #486cb0, #8DC26F);
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;      
@@ -111,24 +117,27 @@
   
   <div class="login-page">
     <div class="form">
+      <h2 style="font-size: 16px; text-align: center; margin: 0px; padding: 0px">UAlberta ScITech</h2>
+      <h1 style="font-size: 25px; text-align: center; margin: 0px; padding: 0px 0px 10px 0px"><b>WebCMDB Login</b></h1>
       <form class="login-form" method="post" action="{% url 'login' %}">
         {% csrf_token %}
-        <input id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:"" }}" type="text" placeholder="username" required="" />
-        <input id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" value="{{ form.password.value|default_if_none:"" }}" type="password" placeholder="password" required="" />
-        <button type="submit">login</button>
-         {# Assumes you setup the password_reset view in your URLconf #}
-        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+        <input id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" value="{{ form.username.value|default_if_none:"" }}" type="text" placeholder="Username" required="" />
+        <input id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" value="{{ form.password.value|default_if_none:"" }}" type="password" placeholder="Password" required="" />
+        <button type="submit" >login</button>
+         
         {% if form.errors %}
-      <p style="color: red">Your username and password didn't match. Please try again.</p>
+      <p style="color: red; font-size:15px; text-align: left">Your username and password didn't match.</p>
     {% endif %}
   
   {% if next %}
     {% if user.is_authenticated %}
-      <p style="color: red">Your account doesn't have access to this page. To proceed,
+      <p style="color: red; font-size:15px; text-align: left">Your account doesn't have access to this page. To proceed,
       please login with an account that has access.</p>
     {% endif %}
   {% endif %}  
         <input type="hidden" name="next" value="{{ next }}" />
+        {# Assumes you setup the password_reset view in your URLconf #}
+        <p id="lost_password"><a href="{% url 'password_reset' %}">Lost password?</a></p>
       </form>
     </div>
   </div>
