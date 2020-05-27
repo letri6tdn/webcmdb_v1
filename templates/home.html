@@ -2,11 +2,55 @@
 
 {% block search %}
 <style>
+	.logout_home_right_corner{
+		float: right;
+		padding: 5px;
+	}
+
+	.webcmdb_h1{
+		padding: 10px;
+	}
+
+	#add_button{
+		border: solid 1px; 
+		margin: 0px 0px 5px 15px;
+	}
+
+	.search_form{
+		padding: 0px 10px 10px 10px;
+	}
+
+	#search_simple{
+		border: 1px solid grey; 
+		padding: 5px;
+	}
+
+	#search_simple legend{
+		color: #6699ff; 
+		padding-left:10px; 
+		width: auto;
+	}
+
+	#search_advance{
+		border: 1px solid grey; 
+		padding: 5px;
+	}
+
+	#search_advance legend{
+		color: #ff3300; 
+		padding-left:10px; 
+		width: auto;
+	}
+
+	#search_advance .th_column2{
+		padding-left: 70px;
+	}
+
 	body {
 		background: #ededed;
 	}
 </style>
-<div style="float:right; padding: 5px">
+<div class="logout_home_right_corner" >
     <form align="right" name="form1" method="post" action="{% url 'logout' %}">
       {% csrf_token %}
       <label class="logoutLblPos">
@@ -19,16 +63,17 @@
       </label>
     </form>
 </div>
-<h1 style="padding: 10px">Welcome to WebCMDB v1</h1>
+
+<h1 class="webcmdb_h1">Welcome to WebCMDB v1</h1>
 
 <form method="get" action="{% url 'machine_add' %}">
-	<button style="border: solid 1px; margin: 0px 0px 5px 15px" type="submit" class="btn btn-primary">Add</button>
+	<button id="add_button" type="submit" class="btn btn-primary">Add</button>
 </form>
 
 
-<form action="{% url 'search_results' %}" method="get" style="padding: 0px 10px 10px 10px">
-	<fieldset style="border: 1px solid grey; padding: 5px">
-		<legend style="color: #6699ff; padding-left:10px; width: auto"><b>Simple Search: &nbsp;</b></legend>
+<form action="{% url 'search_results' %}" method="get" class="search_form">
+	<fieldset id="search_simple">
+		<legend><b>Simple Search: &nbsp;</b></legend>
 		<label for='q_hostname' style=""><b>Hostname: </b></label><br>
 		<input type='text' id='q_hostname' name='q_hostname' placeholder="Please enter the hostname" autofocus size="50" required=""><br><br>
 		<button type="submit" class="btn btn-success">Search</button>
@@ -36,21 +81,21 @@
 	</fieldset><br><br>
 
 
-	<fieldset style="border: 1px solid grey; padding: 5px">
-		<legend style="color: #ff3300; padding-left:10px; width: auto"><b>Advanced Search: &nbsp;</b></legend>
+	<fieldset id="search_advance">
+		<legend><b>Advanced Search: &nbsp;</b></legend>
 		<table>
 
 			<tbody>
 
 				<tr>
 					<th>
-						<label for='q_location'style="">Location: &nbsp;</label>
+						<label for='q_location'>Location: &nbsp;</label>
 					</th>
 					<td>
 						<input type='text' id='q_location' name='q_location' placeholder="Please enter the location"  size="50">
 					</td>
-					<th style="padding-left: 70px">
-						<label for='q_ram'style="">RAM (GB): &nbsp;</label>
+					<th class="th_column2">
+						<label for='q_ram'>RAM (GB): &nbsp;</label>
 					</th>
 					<td>
 						<input type='text' id='q_ram' name='q_ram' placeholder="Please enter the RAM"  size="50">
@@ -64,7 +109,7 @@
 					<td>
 						<input type='text' id='q_ipv4' name='q_ipv4' placeholder="Please enter the IPv4"  size="50">
 					</td>
-					<th style="padding-left: 70px">
+					<th class="th_column2">
 						<label for='q_storage'style="">Storage (GB): &nbsp;</label>
 					</th>
 					<td>
@@ -79,7 +124,7 @@
 					<td>
 						<input type='text' id='q_ipv6' name='q_ipv6' placeholder="Please enter the IPv6"  size="50">
 					</td>
-					<th style="padding-left: 70px">
+					<th class="th_column2">
 						<label for='q_gpu'style="">GPU: &nbsp;</label>
 					</th>
 					<td>
@@ -94,7 +139,7 @@
 					<td>
 						<input type='text' id='q_os' name='q_os' placeholder="Please enter the OS"  size="50">
 					</td>
-					<th style="padding-left: 70px">
+					<th class="th_column2">
 						<label for='q_serial_number'style="">Serial Number: &nbsp;</label>
 					</th>
 					<td>
@@ -109,7 +154,7 @@
 					<td>
 						<input type='text' id='q_physical_virtual' name='q_physical_virtual' placeholder="Gotta work this out LOL"  size="50">
 					</td>
-					<th style="padding-left: 70px">
+					<th class="th_column2">
 						<label for='q_status'style="">Status: &nbsp;</label>
 					</th>
 					<td>
@@ -124,7 +169,7 @@
 					<td>
 						<input type='text' id='q_owner' name='q_owner' placeholder="Please enter the owner"  size="50">
 					</td>
-					<th style="padding-left: 70px">
+					<th class="th_column2">
 						<label for='q_rack'style="">Rack Number: &nbsp;</label>
 					</th>
 					<td>
@@ -139,7 +184,7 @@
 					<td>
 						<input type='text' id='q_administrator' name='q_administrator' placeholder="Please enter the administrator"  size="50">
 					</td>
-					<th style="padding-left: 70px">
+					<th class="th_column2">
 						<label for='q_powerup'style="">Power Up: &nbsp;</label>
 					</th>
 					<td>
@@ -154,7 +199,7 @@
 					<td>
 						<input type='text' id='q_uofa_tag' name='q_uofa_tag' placeholder="Please enter the UofA tag"  size="50">
 					</td>
-					<th style="padding-left: 70px">
+					<th class="th_column2">
 						<label for='q_support'style="">Support Team: &nbsp;</label>
 					</th>
 					<td>
@@ -169,7 +214,7 @@
 					<td>
 						<input type='text' id='q_model' name='q_model' placeholder="Please enter the model"  size="50">
 					</td>
-					<th style="padding-left: 70px">
+					<th class="th_column2">
 						<label for='q_department'style="">Department: &nbsp;</label>
 					</th>
 					<td>
@@ -184,7 +229,7 @@
 					<td>
 						<input type='text' id='q_processor' name='q_processor' placeholder="Please enter the processor"  size="50">
 					</td>
-					<th style="padding-left: 70px">
+					<th class="th_column2">
 						<label for='q_srit_access'style="">SRIT access: &nbsp;</label>
 					</th>
 					<td>
@@ -210,11 +255,3 @@
 
 </form>
 {% endblock %}
-
-<!--possible later referrence
-
-<div style="overflow: hidden">
-	        <p style="padding-left: 100px" >Hostname: <input name="q_hostname" type="text" style="text-align: center; width: 95%;" onfocus="this.value=''" autocomplete="off"> 
-	        </p>
-	    </div>
--->
