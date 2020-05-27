@@ -11,7 +11,18 @@
     <title>WebCMDB UAlberta V1</title>
 
     <style>
-      div {padding: 8px;}
+      div {
+        padding: 8px;
+      }
+
+      .logout_home_right_corner {
+        float:right; 
+        padding: 5px;
+      }
+
+      h1 {
+        margin: 20px 0px 0px 20px;
+      }
 
       table, td, th {
         border: 1px solid black;
@@ -40,7 +51,7 @@
   <body>
     {% if user.is_authenticated %}
 
-      <div style="float:right; padding: 5px">
+      <div class="logout_home_right_corner">
           <form align="right" name="form1" method="post" action="{% url 'logout' %}">
             {% csrf_token %}
             <label class="logoutLblPos">
@@ -53,7 +64,7 @@
             </label>
           </form>
       </div>
-      <h1 style="margin: 20px 0px 0px 20px">Search Results</h1>
+      <h1>Search Results</h1>
 
     <font size="2" face="Courier New" >
 
