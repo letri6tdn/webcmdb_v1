@@ -5,11 +5,12 @@
   1) Search
   2) Edit
   3) Auth
+  4) Add
+  5) UI design (partly)
 
 - Incoming milestones:
-   + Add
    + Export csv
-   + UI design
+
 
 - Additional upgrade:
    + Searchable / Filterable / Sortable result table
