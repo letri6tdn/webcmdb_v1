@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q # new
-
+from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView, ListView
 from .forms import MachineForm
 from django.contrib.auth.decorators import login_required
+from django.views.generic.edit import DeleteView
 
 
 from .models import Machines
@@ -92,3 +93,11 @@ def machine_add(request):
 	else:
 		form = MachineForm()
 	return render(request, 'machine_add.html', {'form': form})
+
+def machine_delete(request, pk):
+	machine = get_object_or_404(Machines, pk=pk)
+	if request.method == "POST":
+		machine.delete()
+		return HttpResponseRedirect(request.POST.get('next', '/'))
+
+

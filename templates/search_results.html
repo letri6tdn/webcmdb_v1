@@ -63,7 +63,8 @@
         <tbody>
         {% for machine in object_list %}
           <tr>
-            <td><a href="{% url 'machine_edit' pk=machine.pk %}">{{ machine.hostname }}</a></td>
+
+            <td><a href="{% url 'machine_edit' pk=machine.pk %}?next={{ location.href }}">{{ machine.hostname }}</a></td>
             <td>{{ machine.last_known_location }}</td>
             <td>{{ machine.ipv4 }}</td>
             <td>{{ machine.ipv6 }}</td>

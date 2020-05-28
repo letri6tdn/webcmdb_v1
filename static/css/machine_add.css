@@ -14,3 +14,7 @@ h2 {
 #form_add button {
 	border: solid 1px;
 }
+
+body {
+	background: #ededed;
+}
