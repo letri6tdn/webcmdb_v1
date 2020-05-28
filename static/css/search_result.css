@@ -1,0 +1,33 @@
+div {
+        padding: 8px;
+      }
+
+      .logout_home_right_corner {
+        float:right; 
+        padding: 5px;
+      }
+
+      h1 {
+        margin: 20px 0px 0px 20px;
+      }
+
+      table, td, th {
+        border: 1px solid black;
+      }
+
+      table {
+        padding-left: 5px;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th, td {
+        padding: 3px;
+        text-align: left;
+      }
+      th {
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      tr:nth-child(even) {background-color: #f2f2f2;}
