@@ -1,0 +1,16 @@
+.logout_home_right_corner {
+	float: right;
+	padding: 5px;
+}
+
+h2 {
+	padding: 5px 5px 5px 20px;
+}
+
+#form_add {
+	padding: 10px;
+}
+
+#form_add button {
+	border: solid 1px;
+}

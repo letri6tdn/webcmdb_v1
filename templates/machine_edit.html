@@ -1,25 +1,9 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/machine_edit.css' %}"/>
+{% endblock %}
 {% block content %}
-	<style>
-		.logout_home_right_corner{
-			float:right; 
-			padding: 5px;
-		}
-
-		h2 {
-			padding:5px 5px 5px 20px;
-		}
-
-		#button_save{
-			border: solid 1px;
-		}
-
-		#search_result{
-			padding: 10px;
-		}
-	</style>
-
 	<div class="logout_home_right_corner">
 	    <form align="right" name="form1" method="post" action="{% url 'logout' %}">
 	      {% csrf_token %}
